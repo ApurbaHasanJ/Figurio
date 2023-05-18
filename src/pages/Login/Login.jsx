@@ -12,15 +12,13 @@ const Login = () => {
     
     <div className="my-container">
         <h3 className="text-xl lg:text-4xl md:text-2xl text-slate-900 text-center font-bold border-b pb-5 mb-5">
-        Login your account
+        Sign In your account
       </h3>
-        <div className=" grid lg:grid-cols-2 items-center">
+        <div className=" grid lg:grid-cols-2  my-7 mt-0 lg:my-16 items-center">
       {/* Lottie Animation */}
-      <div className=" ">
-        <div className="w-full ">
+      <div className="w-full ">
           <Lottie animationData={login} loop={true} />
         </div>
-      </div>
       <div className="  border-2 p-10 mx-3 lg:mx-0 rounded-lg shadow-lg">
         <form>
           <div className="form-control mb-3">
