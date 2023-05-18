@@ -3,18 +3,22 @@
 @tailwind utilities;
 
 .my-container {
-  @apply mx-auto p-3 md:p-6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl;
+  @apply mx-auto p-3 md:p-6 sm:max-w-xl md:max-w-full lg:max-w-screen-xl w-full;
 }
 
 .btn {
-  @apply inline-flex items-center capitalize lg:text-base text-xs lg:px-6 md:px-4 px-3 lg:py-3 py-2  mb-3 font-medium text-white transition rounded border-none shadow-md md:mb-0  bg-rose-400  hover:bg-orange-400 duration-700;
+  @apply inline-flex items-center capitalize lg:text-base text-xs lg:px-6 md:px-4 px-3 lg:py-3 py-2  mb-3 font-medium text-white transition rounded border-none shadow-md md:mb-0  bg-rose-400  hover:bg-rose-500 duration-700;
 }
 .btn-sec {
   @apply text-lg font-medium tracking-wide px-4 py-3 rounded drop-shadow-2xl border border-rose-400 text-rose-400 hover:text-white hover:bg-rose-400 duration-500;
 }
 
+.badge {
+  @apply  p-2  text-xs font-semibold  text-white uppercase rounded-full bg-red-600;
+}
+
 .sub-header {
-  @apply bg-orange-400 py-2 px-6  mt-12 font-mono text-base md:text-xl lg:text-3xl ml-3 md:ml-8 lg:ml-14 inline-block text-center mr-auto text-white;
+  @apply bg-rose-500 py-2 px-6  mt-12 font-mono text-base md:text-xl lg:text-3xl ml-3 md:ml-8 lg:ml-14 inline-block text-center mr-auto text-white;
 }
 
 .active {
