@@ -1,15 +1,66 @@
 import Lottie from "lottie-react";
 import login from "../../assets/login.json";
 import useTitle from "../../hooks/useTitle";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
   useTitle("Login");
+  const {continueWithGoogle, loginUser} = useContext(AuthContext)
+  const navigate = useNavigate();
+  const location = useLocation();
   const [show, setShow] = useState(false);
 
+
+  // get redirect path
+  const from = location.state?.from?.pathname || "/";
+
+  // Continue with Google
+  const googleSignIn = ()=> {
+    continueWithGoogle()
+    .then((result) => {
+      const loggedUser = result.user;
+      toast.success("Sign in Successfully");
+      console.log(loggedUser);
+      navigate(from, { replace: true });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  }
+
+
+  // handle login
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const htmlForm = event.target;
+    const email = htmlForm.email.value;
+    const password = htmlForm.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then((result) => {
+        const loginUser = result.user;
+        console.log(loginUser);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message.split("auth/")[1].slice(0, -2));
+      });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
+
+
+
+
   return (
-    
     <div className="my-container">
         <h3 className="text-xl lg:text-4xl md:text-2xl text-slate-900 text-center font-bold border-b pb-5 mb-5">
         Sign In your account
@@ -20,7 +71,7 @@ const Login = () => {
           <Lottie animationData={login} loop={true} />
         </div>
       <div className="  border-2 p-10 mx-3 lg:mx-0 rounded-lg shadow-lg">
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="form-control mb-3">
             <label className="label text-base font-medium text-slate-900 ">
               <span className="label-text">Email</span>
@@ -86,7 +137,7 @@ const Login = () => {
         </div>
         <div className="form-control  mt-4">
           <button
-            // onClick={googleSignIn}
+            onClick={googleSignIn}
             className=" w-full btn"
           >
             <img
