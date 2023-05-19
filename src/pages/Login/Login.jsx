@@ -73,8 +73,9 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Your email"
-                className="input input-bordered"
+                className="input hover:shadow-md input-bordered"
               />
             </div>
             <div className="form-control">
@@ -85,7 +86,7 @@ const Login = () => {
                 type={show ? "text" : "password"}
                 id="password"
                 name="password"
-                className="input input-bordered"
+                className="input hover:shadow-md input-bordered"
                 required
                 placeholder="Password"
               />
@@ -130,7 +131,7 @@ const Login = () => {
             <div className="border-b h-1 w-full border-gray-300"></div>
           </div>
           <div className="form-control  mt-4">
-            <button onClick={googleSignIn} className=" w-full btn">
+            <button onClick={googleSignIn} className=" w-full btn-sec">
               <img
                 className="w-7 h-7"
                 src="https://i.postimg.cc/4NhHcV5v/google.png"

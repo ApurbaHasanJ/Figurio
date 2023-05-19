@@ -59,7 +59,7 @@ const SignUp = () => {
   return (
     <div className="my-container">
       <h3 className="text-xl lg:text-4xl md:text-2xl text-slate-900 text-center font-bold border-b pb-5 mb-5">
-        SignUp your account
+        Sign Up your account
       </h3>
       <div className=" grid lg:grid-cols-2 my-7 mt-0 lg:my-16 items-center">
         {/* Lottie Animation */}
@@ -75,8 +75,9 @@ const SignUp = () => {
               <input
                 type="text"
                 name="name"
+                required
                 placeholder="Your name"
-                className="input input-bordered"
+                className="input hover:shadow-md input-bordered"
               />
             </div>
             <div className="form-control mb-3">
@@ -86,8 +87,8 @@ const SignUp = () => {
               <input
                 type="text"
                 name="photoUrl"
-                placeholder="Your name"
-                className="input input-bordered"
+                placeholder="Enter photo url"
+                className="input hover:shadow-md input-bordered"
               />
             </div>
             <div className="form-control mb-3">
@@ -97,8 +98,9 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
+                required
                 placeholder="Your email"
-                className="input input-bordered"
+                className="input hover:shadow-md input-bordered"
               />
             </div>
             <div className="form-control">
@@ -109,7 +111,7 @@ const SignUp = () => {
                 type={show ? "text" : "password"}
                 id="password"
                 name="password"
-                className="input input-bordered"
+                className="input hover:shadow-md input-bordered"
                 required
                 placeholder="Password"
               />
@@ -156,7 +158,7 @@ const SignUp = () => {
           <div className="form-control  mt-4">
             <button
               onClick={googleSignIn}
-              className=" w-full btn"
+              className=" w-full btn-sec"
             >
               <img
                 className="w-7 h-7"

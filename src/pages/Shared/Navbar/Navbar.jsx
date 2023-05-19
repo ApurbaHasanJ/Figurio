@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   console.log(user);
@@ -77,46 +77,45 @@ const Navbar = () => {
   // user Status
   const userStatus = (
     <>
-      {/* <li className="ml-auto text-2xl">
-        <Link to="/orderReviews">
-          <AiOutlineShopping className="w-7 h-7 duration-300 hover:text-[#FF3811]" />
-        </Link>
-      </li> */}
       <li>
         <Link to="/">
           <AiOutlineSearch className="w-7 h-7 duration-300 hover:text-[#FF3811]" />
         </Link>
       </li>
-      {user && (
-        <li>
-          {user.photoURL ? (
-            <img
-              className="lg:w-13 lg:h-13 md:h-10 md:w-10 h-7 w-7 rounded-full"
-              title={user.displayName}
-              src={user.photoURL}
-              alt="User.png"
-            />
-          ) : (
-            <FaUser className="text-2xl" />
-          )}
-        </li>
-      )}
       {user ? (
-        <li className="">
-          <Link  className="inline-flex items-center">
-            <button onClick={handleLogout} className=" btn-sec">
-              Log Out
-            </button>
-          </Link>
+        <li className="dropdown dropdown-end">
+          <label tabIndex={0}>
+            <div className="w-10 rounded-full">
+              {user?.photoURL ? (
+                <img
+                  src={user?.photoURL}
+                  alt={user?.displayName}
+                  className="w-full rounded-full h-full"
+                />
+              ) : (
+                <FaUser className="text-2xl" />
+              )}
+            </div>
+          </label>
+          <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <Link to="/profile" className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/settings">Settings</Link>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          </ul>
         </li>
       ) : (
         <li className="">
           <Link to="/login" className="inline-flex items-center">
-            <button 
-            // onClick={handleLogIn} 
-            className=" btn-sec">
-              Log In
-            </button>
+            <button className="btn-sec">Log In</button>
           </Link>
         </li>
       )}

@@ -83,7 +83,7 @@ const ToysDetails = () => {
             <button className=" border border-rose-400 text-rose-500 hover:bg-rose-400 hover:text-white py-2 px-4 rounded-md duration-700">
               Add to Cart
             </button>
-            <button className="bg-rose-400 hover:bg-white hover:text-rose-400 hover:border hover:border-rose-400 text-white py-2 px-4 rounded-md duration-700">
+            <button className="bg-rose-400 hover:bg-white hover:text-rose-400 border border-rose-400 text-white py-2 px-4 rounded-md duration-700">
               Buy Now
             </button>
           </div>
