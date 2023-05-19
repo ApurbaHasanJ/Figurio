@@ -32,9 +32,9 @@ const SignUp = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast.success("Sign Up Successfully");
+        navigate(path, { replace: true });
         form.reset();
         // console.log(loggedUser);
-        navigate(path, { replace: true });
       })
       .catch((err) => {
         console.log(err);

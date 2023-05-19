@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { AuthContext } from "../../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const ShopByCategory = () => {
+  const { user } = useContext(AuthContext);
   const [shopCategories, setShopCategories] = useState([]);
   const url = "https://figurio-apurbahasanj.vercel.app/categories";
 
@@ -18,6 +21,22 @@ const ShopByCategory = () => {
       });
   }, [url]);
 
+
+  const handlePrivateRouteAlert = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Error!",
+        text: "You Have to Login First!!",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+  };
+
+  // const handleToyDetailsClick = (categoryId, toyId) => {
+  //   window.location.href = `/categories/${categoryId}/toys/${toyId}`;
+  // };
+
   console.log(shopCategories);
 
   return (
@@ -26,14 +45,12 @@ const ShopByCategory = () => {
         Action Figure Toys
       </h2>
       <p className="text-gray-600 mb-4 text-center">
-        <p className="text-gray-600 mb-4 text-center">
-          Discover an incredible selection of action figure toys featuring your
-          favorite characters. Immerse yourself in the world of these iconic
-          franchises with meticulously crafted figures that capture the essence
-          and excitement of each character&apos;s adventures.
-        </p>
+        Discover an incredible selection of action figure toys featuring your
+        favorite characters. Immerse yourself in the world of these iconic
+        franchises with meticulously crafted figures that capture the essence
+        and excitement of each character&apos;s adventures.
       </p>
-      <Tabs className='drop-shadow-xl p-6'>
+      <Tabs className="drop-shadow-xl p-6">
         <TabList className="flex space-x-4">
           {shopCategories.map((category) => (
             <Tab
@@ -46,7 +63,7 @@ const ShopByCategory = () => {
         </TabList>
         {shopCategories.map((category) => (
           <TabPanel key={category._id} className="mt-5">
-            <div className="grid grid-cols-1 grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               {category.toys.map((toy) => (
                 <div
                   key={toy._id}
@@ -61,12 +78,16 @@ const ShopByCategory = () => {
                   </div>
                   <h3 className="text-lg font-bold mb-2">{toy.name}</h3>
                   <p className="text-gray-700 mb-2">Price: {toy.price}</p>
-                  <Link to={`/toys-details/${toy._id}`}>
-                  <button
-                    className="bg-rose-400 text-white py-2 px-4 mt-2 rounded-md hover:bg-rose-500 transition-colors"
+                  <Link
+                    to={`/categories/${category._id}/toys/${toy._id}`}
+                    onClick={handlePrivateRouteAlert}
                   >
-                    View Details
-                  </button>
+                    <button
+                    //  onClick={() => handleToyDetailsClick(category._id, toy._id)}
+                      className="bg-rose-400 text-white py-2 px-4 mt-2 rounded-md hover:bg-rose-500 transition-colors"
+                    >
+                      View Details
+                    </button>
                   </Link>
                 </div>
               ))}
