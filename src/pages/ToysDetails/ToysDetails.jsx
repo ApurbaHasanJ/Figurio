@@ -4,11 +4,18 @@ import { BsStar, BsStarFill} from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineEye } from "react-icons/ai";
 import Rating from "react-rating";
+import useTitle from "../../hooks/useTitle";
 
 const ToysDetails = () => {
   const { user } = useContext(AuthContext);
   const [toyDetails, setToyDetails] = useState(null);
   const { categoryId, toyId } = useParams();
+
+  useTitle('Toy Details')
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const fetchToyDetails = async () => {

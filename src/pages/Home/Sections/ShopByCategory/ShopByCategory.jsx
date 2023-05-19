@@ -24,12 +24,7 @@ const ShopByCategory = () => {
 
   const handlePrivateRouteAlert = () => {
     if (!user) {
-      Swal.fire({
-        title: "Error!",
-        text: "You Have to Login First!!",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
+      Swal.fire('You Have To Login First!!!')
     }
   };
 
