@@ -5,7 +5,7 @@ import { MdEmail, MdLocationOn } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="bg-slate-900 pt-10 ">
+    <div className="bg-slate-900 pt-10 mt-20">
       <div className="my-container grid lg:grid-cols-5  md:grid-cols-3  gap-16 items-start text-white ">
         <div className="">
           <img src={logo} alt="" className="lg:w-20 md:w-16 w-12" />
@@ -64,13 +64,13 @@ const Footer = () => {
         </div>
         <div className="text-gray-400">
           <div className="flex gap-4 mb-3 items-center">
-            <div className="text-xl">
+            <div >
             <BsFillTelephoneFill />
             </div>
             <p>+88 01533 333 333</p>
           </div>
           <div className="flex gap-4 mb-3 items-center">
-            <div className="text-xl">
+            <div >
             <MdEmail />
             </div>
             <p>info@gmail.com</p>

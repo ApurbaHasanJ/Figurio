@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -18,11 +19,6 @@ const ShopByCategory = () => {
   }, [url]);
 
   console.log(shopCategories);
-
-  const handleViewDetails = (toy) => {
-    console.log("View details for toy:", toy);
-    // Add your logic here to handle displaying the toy details
-  };
 
   return (
     <div className="my-container mt-12">
@@ -65,12 +61,13 @@ const ShopByCategory = () => {
                   </div>
                   <h3 className="text-lg font-bold mb-2">{toy.name}</h3>
                   <p className="text-gray-700 mb-2">Price: {toy.price}</p>
+                  <Link to={`/toys-details/${toy._id}`}>
                   <button
-                    onClick={() => handleViewDetails(toy)}
                     className="bg-rose-400 text-white py-2 px-4 mt-2 rounded-md hover:bg-rose-500 transition-colors"
                   >
                     View Details
                   </button>
+                  </Link>
                 </div>
               ))}
             </div>

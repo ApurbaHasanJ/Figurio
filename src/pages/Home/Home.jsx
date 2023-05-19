@@ -3,6 +3,7 @@ import useTitle from "../../hooks/useTitle";
 import Banners from "./Sections/Banners/Banners";
 import Gallery from "./Sections/Gallery/Gallery";
 import ShopByCategory from "./Sections/ShopByCategory/ShopByCategory";
+import Tips from "./Sections/tipsForChoosing/Tips";
 
 
 
@@ -19,9 +20,17 @@ const Home = () => {
 
     return (
         <div >
+            {/* header banner */}
             <Banners/>
+            
+            {/* gallery section Real Character Showcases */}
             <Gallery/>
+
+            {/* Action Figure Toys shop by category section */}
             <ShopByCategory/>
+
+            {/* Tips for choosing toys for children section */}
+            <Tips/>
         </div>
     );
 };
