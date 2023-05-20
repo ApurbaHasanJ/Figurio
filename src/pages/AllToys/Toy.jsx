@@ -31,11 +31,11 @@ const Toy = ({ toy, index }) => {
     <>
       <tr>
         <th>{index + 1}</th>
+        <td>{sellerName}</td>
         <td>{toyName}</td>
+        <td>{toySubCategory}</td>
         <td>${toyPrice}</td>
         <td>{toyQuantity}</td>
-        <td>{toySubCategory}</td>
-        <td>{sellerName}</td>
         <td>
           <button
             onClick={handleOpenModal}

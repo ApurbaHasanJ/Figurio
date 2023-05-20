@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/sword.png";
-import { AiOutlineSearch } from "react-icons/ai";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FaUser } from "react-icons/fa";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useContext, useState } from "react";
@@ -78,8 +78,8 @@ const Navbar = () => {
   const userStatus = (
     <>
       <li>
-        <Link to="/">
-          <AiOutlineSearch className="w-7 h-7 duration-300 hover:text-[#FF3811]" />
+        <Link to="/all-toys">
+          <HiOutlineShoppingCart className="w-7 h-7 duration-300 hover:text-[#FF3811]" />
         </Link>
       </li>
       {user ? (
@@ -90,6 +90,7 @@ const Navbar = () => {
                 <img
                   src={user?.photoURL}
                   alt={user?.displayName}
+                  title={user?.displayName}
                   className="w-full rounded-full h-full"
                 />
               ) : (

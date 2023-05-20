@@ -49,20 +49,20 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
                 </p>
               </div>
               <div className="border-b-2 border-rose-500">
-                <p className="text-gray-600 lg:text-lg text-base font-bold mb-2">
+                <p className="text-gray-600 lg:text-lg text-base font-bold">
                   Category: {toyCategory}
                 </p>
                 <p className="text-gray-600  font-semibold mb-2">
                   Sub-Category: {toySubCategory}
                 </p>
-                <p className="text-gray-600 font-medium  mb-2">
+                <p className="text-gray-600 font-medium  ">
                   Seller: {sellerName}
                 </p>
-                <p className="text-gray-600  mb-2">
+                <p className="text-gray-600  mb-3">
                   Email: {sellerEmail}
                 </p>
 
-                <p className="text-gray-600 mb-2 text-base">
+                <p className="text-gray-600 mb-3 text-base">
                   Toy Info: {toyDetails}
                 </p>
               </div>

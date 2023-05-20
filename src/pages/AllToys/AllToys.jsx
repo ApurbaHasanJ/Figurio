@@ -1,8 +1,9 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BsInfoSquareFill } from "react-icons/bs";
 import Toy from "./Toy";
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     fetch("https://figurio.vercel.app/all-toys")
@@ -12,6 +13,24 @@ const AllToys = () => {
         setAllToys(data);
       });
   }, []);
+
+  const handleSearchToys = ()=> {
+    fetch(`https://figurio.vercel.app/toysSearch/${searchText}`)
+    .then(res => res.json())
+    .then(data => {
+      setAllToys(data)
+      console.log(data);
+
+    })
+  }
+
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearchToys();
+    }
+  };
+
   return (
     <div className="overflow-x-auto my-container">
       <h2 className="text-xl md:text-3xl lg:text-5xl font-bold mb-3 text-center">
@@ -22,6 +41,21 @@ const AllToys = () => {
         yourself or your loved ones. Browse through the list below and discover
         the joy of play.
       </p>
+
+      <div className="flex gap-4 my-5 justify-center">
+      <div className="form-control">
+        <input
+          type="text"
+          onChange={(e)=> setSearchText(e.target.value)}
+          placeholder="Search by name"
+          onKeyPress={handleKeyPress}
+          className="input input-bordered"
+        />
+      </div>
+      <button
+      onClick={handleSearchToys}
+       className="btn">Search</button>
+      </div>
       <table className="table table-zebra w-full">
         {/* head */}
         <thead>
@@ -33,7 +67,7 @@ const AllToys = () => {
             <th>Price</th>
             <th>Quantity</th>
             <th>
-              <BsInfoSquareFill className="text-xl" />
+              <BsInfoSquareFill className="text-xl text-rose-400" />
             </th>
           </tr>
         </thead>
