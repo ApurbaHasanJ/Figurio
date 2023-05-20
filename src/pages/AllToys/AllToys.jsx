@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { BsInfoSquareFill } from "react-icons/bs";
 import Toy from "./Toy";
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
@@ -24,6 +23,9 @@ const AllToys = () => {
     })
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -67,7 +69,7 @@ const AllToys = () => {
             <th>Price</th>
             <th>Quantity</th>
             <th>
-              <BsInfoSquareFill className="text-xl text-rose-400" />
+              View details
             </th>
           </tr>
         </thead>

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ToyDetailsModal from "./ToyDetailsModal";
-import { AiOutlineEye } from "react-icons/ai";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -37,13 +37,12 @@ const Toy = ({ toy, index }) => {
         <td>${toyPrice}</td>
         <td>{toyQuantity}</td>
         <td>
-          <button
+          
+            
+            <BsFillInfoSquareFill
             onClick={handleOpenModal}
-            className="border flex items-center gap-1 border-rose-400 text-rose-500 hover:bg-rose-400 hover:text-white py-2 px-4 rounded-md duration-700"
-          >
-            <span>View details</span>
-            <AiOutlineEye className="text-2xl" />
-          </button>
+            className="text-2xl text-rose-400" />
+          
         </td>
       </tr>
       {isModalOpen && (

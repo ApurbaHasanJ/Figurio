@@ -68,7 +68,7 @@ const AddAToy = () => {
         {/* page header */}
         <div className="text-center">
           <h2 className="text-5xl text-slate-800">Add Your Toy</h2>
-          <p className="text-gray-400 my-6">
+          <p className="text-gray-400 my-6 w-5/6 mx-auto">
             Welcome to the exciting world of toy collection! Add your favorite
             toys and expand your collection. This is the perfect place to
             showcase your toys. Join our community of toy enthusiasts and share

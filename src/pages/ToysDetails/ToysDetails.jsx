@@ -1,17 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BsStar, BsStarFill} from "react-icons/bs";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineEye } from "react-icons/ai";
 import Rating from "react-rating";
 import useTitle from "../../hooks/useTitle";
+import { BallTriangle } from "react-loader-spinner";
 
 const ToysDetails = () => {
   const { user } = useContext(AuthContext);
   const [toyDetails, setToyDetails] = useState(null);
   const { categoryId, toyId } = useParams();
 
-  useTitle('Toy Details')
+  useTitle("Toy Details");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +35,18 @@ const ToysDetails = () => {
   }, [categoryId, toyId]);
 
   if (!user || !toyDetails) {
-    return <progress className="progress w-56"></progress>;
+    return (
+      <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#4fa94d"
+        ariaLabel="ball-triangle-loading"
+        wrapperClass={{}}
+        wrapperStyle=""
+        visible={true}
+      />
+    );
   }
 
   return (

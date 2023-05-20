@@ -23,7 +23,11 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
           <h3 className="font-bold text-lg mb-2">Toy Details</h3>
           <div className="md:flex gap-8">
             <div className=" md:w-5/12">
-              <img className="lg:w-full lg:h-full h-52 rounded-md" src={toyPhoto} alt={toyName} />
+              <img
+                className="lg:w-full lg:h-full h-52 rounded-md"
+                src={toyPhoto}
+                alt={toyName}
+              />
             </div>
             <div className=" ml-4 md:w-7/12">
               {/* <p className="text-gray-600 mb-2">Rating: {toyDetails.rating}</p> */}
@@ -40,12 +44,15 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
               />
 
               <div className=" border-b border-gray-300 mb-3">
-                <h2 className="lg:text-3xl text-lg font-bold mb-1">{toyName} Toy</h2>
+                <h2 className="lg:text-3xl text-lg font-bold mb-1">
+                  {toyName} Toy
+                </h2>
                 <p className="text-rose-400 lg:text-lg text-base font-bold mb-2">
                   Price: ${toyPrice}
                 </p>
                 <p className="text-gray-600 mb-5 font-medium">
-                  {toyQuantity} Toys available in stock
+                  Availability:{" "}
+                  {toyQuantity > 0 ? "In stock!!" : "Out of stock"}
                 </p>
               </div>
               <div className="border-b-2 border-rose-500">
@@ -58,9 +65,7 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
                 <p className="text-gray-600 font-medium  ">
                   Seller: {sellerName}
                 </p>
-                <p className="text-gray-600  mb-3">
-                  Email: {sellerEmail}
-                </p>
+                <p className="text-gray-600  mb-3">Email: {sellerEmail}</p>
 
                 <p className="text-gray-600 mb-3 text-base">
                   Toy Info: {toyDetails}
