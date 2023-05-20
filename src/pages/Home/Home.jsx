@@ -5,34 +5,28 @@ import Gallery from "./Sections/Gallery/Gallery";
 import ShopByCategory from "./Sections/ShopByCategory/ShopByCategory";
 import Tips from "./Sections/tipsForChoosing/Tips";
 
-
-
 const Home = () => {
-    useTitle('Home')
+  useTitle("Home");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  return (
+    <div>
+      {/* header banner */}
+      <Banners />
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
+      {/* gallery section Real Character Showcases */}
+      <Gallery />
 
+      {/* Action Figure Toys shop by category section */}
+      <ShopByCategory />
 
-
-    return (
-        <div >
-            {/* header banner */}
-            <Banners/>
-            
-            {/* gallery section Real Character Showcases */}
-            <Gallery/>
-
-            {/* Action Figure Toys shop by category section */}
-            <ShopByCategory/>
-
-            {/* Tips for choosing toys for children section */}
-            <Tips/>
-        </div>
-    );
+      {/* Tips for choosing toys for children section */}
+      <Tips />
+    </div>
+  );
 };
 
 export default Home;

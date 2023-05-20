@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BsStar, BsStarFill } from "react-icons/bs";
-import { AuthContext } from "../../providers/AuthProvider";
 import { AiOutlineEye } from "react-icons/ai";
 import Rating from "react-rating";
 import useTitle from "../../hooks/useTitle";
-import { BallTriangle } from "react-loader-spinner";
+import { RotatingLines } from "react-loader-spinner";
 
 const ToysDetails = () => {
-  const { user } = useContext(AuthContext);
-  const [toyDetails, setToyDetails] = useState(null);
+  useTitle("Toys Details");
+  const [toyDetails, setToyDetails] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { categoryId, toyId } = useParams();
 
   useTitle("Toy Details");
@@ -26,6 +26,7 @@ const ToysDetails = () => {
         );
         const data = await response.json();
         setToyDetails(data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching toy details:", error);
       }
@@ -34,30 +35,27 @@ const ToysDetails = () => {
     fetchToyDetails();
   }, [categoryId, toyId]);
 
-  if (!user || !toyDetails) {
-    return (
-      <BallTriangle
-        height={100}
-        width={100}
-        radius={5}
-        color="#4fa94d"
-        ariaLabel="ball-triangle-loading"
-        wrapperClass={{}}
-        wrapperStyle=""
-        visible={true}
-      />
-    );
-  }
-
   return (
     <div className="my-container">
       <div className="md:flex gap-8">
         <div className=" md:w-5/12">
-          <img
-            className="w-full"
-            src={toyDetails.image}
-            alt={toyDetails.name}
-          />
+          {isLoading ? ( // Show loading spinner when still loading
+            <div className="flex justify-center items-center h-full w-full">
+              <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
+              visible={true}
+            />
+            </div>
+          ) : (
+            <img
+              className="w-full"
+              src={toyDetails.image}
+              alt={toyDetails.name}
+            />
+          )}
         </div>
         <div className=" ml-4 md:w-7/12">
           {/* <p className="text-gray-600 mb-2">Rating: {toyDetails.rating}</p> */}

@@ -4,35 +4,34 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { RotatingLines } from "react-loader-spinner";
 
 const ShopByCategory = () => {
   const { user } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true);
   const [shopCategories, setShopCategories] = useState([]);
   const url = "https://figurio-apurbahasanj.vercel.app/categories";
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(url)
       .then((result) => result.json())
       .then((shopCategories) => {
         setShopCategories(shopCategories);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching shop categories:", error);
       });
   }, [url]);
 
-
   const handlePrivateRouteAlert = () => {
     if (!user) {
-      Swal.fire('You Have To Login First!!!')
+      Swal.fire("You Have To Login First!!!");
     }
   };
 
-  // const handleToyDetailsClick = (categoryId, toyId) => {
-  //   window.location.href = `/categories/${categoryId}/toys/${toyId}`;
-  // };
-
-  console.log(shopCategories);
+  // console.log(shopCategories);
 
   return (
     <div className="my-container mt-12">
@@ -65,11 +64,23 @@ const ShopByCategory = () => {
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                 >
                   <div className="aspect-w-3 aspect-h-4 mb-4">
-                    <img
-                      src={toy.image}
-                      alt={toy.name}
-                      className="object-cover w-full h-full rounded-md"
-                    />
+                    {isLoading ? (
+                      <div className="flex justify-center items-center h-full w-full">
+                        <RotatingLines
+                          strokeColor="grey"
+                          strokeWidth="5"
+                          animationDuration="0.75"
+                          width="50"
+                          visible={true}
+                        />
+                      </div>
+                    ) : (
+                      <img
+                        src={toy.image}
+                        alt={toy.name}
+                        className="object-cover w-full h-full rounded-md"
+                      />
+                    )}
                   </div>
                   <h3 className="text-lg font-bold mb-2">{toy.name}</h3>
                   <p className="text-gray-700 mb-2">Price: {toy.price}</p>
@@ -78,7 +89,7 @@ const ShopByCategory = () => {
                     onClick={handlePrivateRouteAlert}
                   >
                     <button
-                    //  onClick={() => handleToyDetailsClick(category._id, toy._id)}
+                      //  onClick={() => handleToyDetailsClick(category._id, toy._id)}
                       className="bg-rose-400 text-white py-2 px-4 mt-2 rounded-md hover:bg-rose-500 transition-colors"
                     >
                       View Details

@@ -158,7 +158,7 @@ const SignUp = () => {
           <div className="form-control  mt-4">
             <button
               onClick={googleSignIn}
-              className=" w-full btn-sec"
+              className=" w-full flex gap-3 btn-sec"
             >
               <img
                 className="w-7 h-7"

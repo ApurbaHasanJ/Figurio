@@ -1,24 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import './Banners.css'
+import "./Banners.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import Banner from "./Banner";
+import LoadingSpinner from "../../../LoadingSpinner/LoadingSpinner";
 
 const Banners = () => {
   const [banners, setBanners] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const swiperRef = useRef(null);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://figurio.vercel.app/banners")
       .then((result) => result.json())
       .then((banners) => {
         setBanners(banners);
+        setIsLoading(false);
       });
   }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   const handleSwiperHover = () => {
     if (swiperRef.current && swiperRef.current.swiper.autoplay.running) {

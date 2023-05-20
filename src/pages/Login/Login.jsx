@@ -131,7 +131,7 @@ const Login = () => {
             <div className="border-b h-1 w-full border-gray-300"></div>
           </div>
           <div className="form-control  mt-4">
-            <button onClick={googleSignIn} className=" w-full btn-sec">
+            <button onClick={googleSignIn} className=" w-full flex gap-3 btn-sec">
               <img
                 className="w-7 h-7"
                 src="https://i.postimg.cc/4NhHcV5v/google.png"
