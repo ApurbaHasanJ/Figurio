@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Toy from "./Toy";
 import useTitle from "../../hooks/useTitle";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
 const AllToys = () => {
   useTitle("All Toys");
   const [allToys, setAllToys] = useState([]);
@@ -20,6 +21,10 @@ const AllToys = () => {
         console.log(data);
         setAllToys(data);
         setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching toys:", error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -29,6 +34,10 @@ const AllToys = () => {
       .then((data) => {
         setAllToys(data);
         console.log(data);
+        setSearchText("");
+      })
+      .catch((error) => {
+        console.error("Error searching toys:", error);
       });
   };
 
@@ -67,6 +76,7 @@ const AllToys = () => {
           Search
         </button>
       </div>
+
       <table className="table table-zebra w-full">
         {/* head */}
         <thead>

@@ -41,17 +41,18 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
             <div className=" ml-4 md:w-7/12">
               {/* <p className="text-gray-600 mb-2">Rating: {toyDetails.rating}</p> */}
               <Rating
-                placeholderRating={toyRating}
-                emptySymbol={<BsStar className="icon text-orange-100 ml-2" />}
-                placeholderSymbol={
-                  <BsStarFill className="icon text-yellow-300 ml-2" />
-                }
-                fullSymbol={
-                  <BsStarFill className="icon text-yellow-300 pm-1" />
-                }
-                readonly
-              />
-
+                    placeholderRating={toyRating}
+                    emptySymbol={
+                      <BsStar className="icon text-yellow-100 ml-2" />
+                    }
+                    placeholderSymbol={
+                      <BsStarFill className="icon text-yellow-300 ml-2" />
+                    }
+                    fullSymbol={
+                      <BsStarFill className="icon text-yellow-300 ml-2" />
+                    }
+                    readonly
+                  />
               <div className=" border-b border-gray-300 mb-3">
                 <h2 className="lg:text-3xl text-lg font-bold mb-1">
                   {toyName} Toy

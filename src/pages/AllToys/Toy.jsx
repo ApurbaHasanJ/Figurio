@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ToyDetailsModal from "./ToyDetailsModal";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import ToyDetailsModal from "../Shared/ToyDetailsModal/ToyDetailsModal";
 
 const Toy = ({ toy, index }) => {
   const location = useLocation();

@@ -5,7 +5,8 @@ import "react-tabs/style/react-tabs.css";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { RotatingLines } from "react-loader-spinner";
-import Aos from "aos";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
 
 const ShopByCategory = () => {
   const { user } = useContext(AuthContext);
@@ -31,13 +32,6 @@ const ShopByCategory = () => {
       Swal.fire("You Have To Login First!!!");
     }
   };
-
-  useEffect(() => {
-    Aos.init({
-      duration: 1000, // Set the duration for animations
-      mirror: false, // Disable mirroring of animations on scroll
-    });
-  }, []);
 
   // console.log(shopCategories);
 
@@ -65,12 +59,9 @@ const ShopByCategory = () => {
         </TabList>
         {shopCategories.map((category) => (
           <TabPanel key={category._id} className="mt-5">
-            <div 
-            data-aos="fade-down"
-            className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               {category.toys.map((toy) => (
-                <div 
-                
+                <div
                   key={toy._id}
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
                 >
@@ -94,6 +85,22 @@ const ShopByCategory = () => {
                     )}
                   </div>
                   <h3 className="text-lg font-bold mb-2">{toy.name}</h3>
+                  <div className="flex items-center">
+                    <p className="text-gray-700 mb-2">Rating:</p>
+                  <Rating
+                    placeholderRating={toy.rating}
+                    emptySymbol={
+                      <BsStar className="icon text-yellow-100 ml-2" />
+                    }
+                    placeholderSymbol={
+                      <BsStarFill className="icon text-yellow-300 ml-2" />
+                    }
+                    fullSymbol={
+                      <BsStarFill className="icon text-yellow-300 ml-2" />
+                    }
+                    readonly
+                  />
+                  </div>
                   <p className="text-gray-700 mb-2">Price: {toy.price}</p>
                   <Link
                     to={`/categories/${category._id}/toys/${toy._id}`}

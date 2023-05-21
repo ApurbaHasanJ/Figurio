@@ -42,12 +42,12 @@ const ToysDetails = () => {
           {isLoading ? ( // Show loading spinner when still loading
             <div className="flex justify-center items-center h-full w-full">
               <RotatingLines
-              strokeColor="grey"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="96"
-              visible={true}
-            />
+                strokeColor="grey"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="96"
+                visible={true}
+              />
             </div>
           ) : (
             <img
@@ -68,7 +68,6 @@ const ToysDetails = () => {
             fullSymbol={<BsStarFill className="icon text-yellow-300 pm-1" />}
             readonly
           />
-
           <div className=" border-b border-gray-300 mb-3">
             <h2 className="text-3xl font-bold mb-2">{toyDetails.name} Toy</h2>
             <p className="text-rose-500 text-lg font-bold mb-5">

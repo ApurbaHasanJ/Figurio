@@ -46,7 +46,7 @@ const UpdateToyInfo = ({ toy, handleToyUpdate }) => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   
                   name="toyPrice"
                   defaultValue={toyPrice}
@@ -62,7 +62,7 @@ const UpdateToyInfo = ({ toy, handleToyUpdate }) => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   
                   name="toyQuantity"
                   defaultValue={toyQuantity}

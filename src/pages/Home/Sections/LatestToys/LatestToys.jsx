@@ -3,8 +3,8 @@ import { AuthContext } from "../../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { BsFillInfoSquareFill } from 'react-icons/bs';
 import { useLocation, useNavigate } from "react-router-dom";
-import ToyDetailsModal from "../../../AllToys/ToyDetailsModal";
 import AOS from "aos";
+import ToyDetailsModal from "../../../Shared/ToyDetailsModal/ToyDetailsModal";
 
 const LatestToys = () => {
   const { user } = useContext(AuthContext);

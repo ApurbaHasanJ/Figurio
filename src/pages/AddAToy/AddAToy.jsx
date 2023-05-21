@@ -104,7 +104,7 @@ const AddAToy = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   required
                   name="toyPrice"
                   placeholder="How much?"
@@ -119,7 +119,7 @@ const AddAToy = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   required
                   name="toyQuantity"
                   placeholder="How many?"
@@ -134,7 +134,7 @@ const AddAToy = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   required
                   name="toyRating"
                   placeholder="Toy rating"
