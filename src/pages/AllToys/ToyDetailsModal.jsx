@@ -21,20 +21,22 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 m-2">
         <div className="modal-container relative bg-white p-4 rounded-md lg:max-w-4xl md:w-5/6 w-10/12">
-          <h3 className="font-bold text-lg mb-2">Toy Details</h3>
+          <h3 className="font-bold md:text-2xl text-lg mb-2">Toy Details</h3>
           <label
             onClick={closeModal}
             className=" sm:text-lg text-rose-500 bg-rose-100 hover:bg-rose-400 hover:text-white sm:p-4 p-3 flex justify-center items-center rounded-full duration-700 sm:h-4 sm:w-4 w-2 h-2 absolute right-3 top-3"
           >
             ✕
           </label>
-          <div className="md:flex gap-8">
+          <div className="md:flex items-center gap-8">
             <div className=" md:w-5/12">
+              <figure className="max-h-5xl">
               <img
-                className="lg:w-full lg:h-full h-52 rounded-md"
+                className="lg:w-full lg:h-full rounded-md"
                 src={toyPhoto}
                 alt={toyName}
               />
+              </figure>
             </div>
             <div className=" ml-4 md:w-7/12">
               {/* <p className="text-gray-600 mb-2">Rating: {toyDetails.rating}</p> */}

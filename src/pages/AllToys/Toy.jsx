@@ -17,12 +17,15 @@ const Toy = ({ toy, index }) => {
     if (user) {
       setIsModalOpen(true);
     } else {
-        Swal.fire('You Have To Login First!!!')
+      Swal.fire("You Have To Login First!!!");
       // Redirect to "/login" when the button is clicked and user is not available
       navigate("/login", { state: { from: location }, replace: true });
     }
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -34,16 +37,14 @@ const Toy = ({ toy, index }) => {
         <td>${toyPrice}</td>
         <td>{toyQuantity}</td>
         <td>
-          
-            
-            <BsFillInfoSquareFill
+          <BsFillInfoSquareFill
             onClick={handleOpenModal}
-            className="text-2xl text-rose-400" />
-          
+            className="text-2xl text-rose-400"
+          />
         </td>
       </tr>
       {isModalOpen && (
-        <ToyDetailsModal toy={toy}  />
+        <ToyDetailsModal toy={toy} closeModal={handleCloseModal} />
       )}
     </>
   );

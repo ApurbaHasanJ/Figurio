@@ -63,7 +63,7 @@ const MyToys = () => {
             <th>Sub-Category</th>
             <th>
               Price
-              <button className="ml-2" onClick={handleSort}>
+              <button className="ml-2 text-rose-400" onClick={handleSort}>
                 {sortBy === "asc" ? "▲" : "▼"}
               </button>
             </th>

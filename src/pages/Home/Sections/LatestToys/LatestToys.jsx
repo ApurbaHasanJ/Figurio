@@ -46,7 +46,7 @@ const LatestToys = () => {
   };
 
   return (
-    <div className="my-container">
+    <div className="my-container mt-6">
       <>
         <h2 className="text-xl md:text-3xl lg:text-5xl  font-bold mb-3 text-center">
           Introducing Our Fresh Toy Collection
@@ -67,7 +67,7 @@ const LatestToys = () => {
             key={toy._id}
             className="card w-full my-2 bg-base-100 shadow-lg hover:shadow-xl"
           >
-            <figure className="w-full shadow">
+            <figure className="w-full max-h-4xl shadow">
               <img
                 className="w-full h-auto "
                 src={toy?.toyPhoto}
