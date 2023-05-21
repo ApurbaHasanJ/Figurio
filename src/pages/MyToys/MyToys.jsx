@@ -9,6 +9,7 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   const [control, setControl] = useState(false);
+  const [sortBy, setSortBy] = useState("");
   
 
 
@@ -17,13 +18,31 @@ const MyToys = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://figurio.vercel.app/my-toys/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://figurio.vercel.app/my-toys/${user?.email}?sortBy=${sortBy}`);
+        const data = await response.json();
         setMyToys(data);
-        // console.log(data);
-      });
-  }, [user, control]);
+      } catch (error) {
+        console.error("Error retrieving toys:", error);
+      }
+    };
+
+    fetchData();
+  }, [user, control, sortBy]);
+
+
+  const handleSort = ()=> {
+    if(sortBy === "asc"){
+      setSortBy("desc");
+    }
+    else{
+      setSortBy("asc");
+    }
+  }
+
+
+
 
   return (
     <div className="overflow-x-auto my-container">
@@ -42,7 +61,12 @@ const MyToys = () => {
             <th></th>
             <th>Toy Name</th>
             <th>Sub-Category</th>
-            <th>Price</th>
+            <th>
+              Price
+              <button className="ml-2" onClick={handleSort}>
+                {sortBy === "asc" ? "▲" : "▼"}
+              </button>
+            </th>
             <th>Quantity</th>
             <th>Update Info</th>
             <th>Delete</th>
