@@ -6,7 +6,7 @@ import UpdateToyInfo from "./UpdateToyInfo";
 
 const MyToy = ({ toy, index, myToys, setMyToys, control, setControl }) => {
   const { _id, toyName, toyPrice, toyQuantity, toySubCategory } = toy;
- 
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleDeleteToy = (_id) => {
@@ -39,7 +39,7 @@ const MyToy = ({ toy, index, myToys, setMyToys, control, setControl }) => {
     });
   };
 
-  const handleToyUpdate = (toy)=>{
+  const handleToyUpdate = (toy) => {
     console.log(toy);
     fetch(`https://figurio.vercel.app/my-toy/${toy?._id}`, {
       method: "PUT",
@@ -57,17 +57,15 @@ const MyToy = ({ toy, index, myToys, setMyToys, control, setControl }) => {
             text: "Your Toy has been Updated Successfully",
             icon: "success",
             confirmButtonText: "Ok",
-          })
-          .then(res => {
-            if(res.isConfirmed){
-              setIsModalOpen(false)
-              setControl(!control)
+          }).then((res) => {
+            if (res.isConfirmed) {
+              setIsModalOpen(false);
+              setControl(!control);
             }
-          })
-          
+          });
         }
       });
-  }
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -86,11 +84,12 @@ const MyToy = ({ toy, index, myToys, setMyToys, control, setControl }) => {
         <td>${toyPrice}</td>
         <td>{toyQuantity}</td>
         <td>
-          <label htmlFor="my-modal-3" className=""><BiEditAlt
-            onClick={handleOpenModal}
-            
-            className="text-xl text-rose-400 cursor-pointer"
-          /></label>
+          <label htmlFor="my-modal-3">
+            <BiEditAlt
+              onClick={handleOpenModal}
+              className="text-xl text-rose-400 cursor-pointer"
+            />
+          </label>
         </td>
         <td>
           <BsTrash
@@ -99,7 +98,9 @@ const MyToy = ({ toy, index, myToys, setMyToys, control, setControl }) => {
           />
         </td>
       </tr>
-      {isModalOpen && <UpdateToyInfo toy={toy} handleToyUpdate={handleToyUpdate}/>}
+      {isModalOpen && (
+        <UpdateToyInfo toy={toy} handleToyUpdate={handleToyUpdate} />
+      )}
     </>
   );
 };

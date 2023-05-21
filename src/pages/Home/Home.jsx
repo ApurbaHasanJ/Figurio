@@ -4,6 +4,7 @@ import Banners from "./Sections/Banners/Banners";
 import Gallery from "./Sections/Gallery/Gallery";
 import ShopByCategory from "./Sections/ShopByCategory/ShopByCategory";
 import Tips from "./Sections/tipsForChoosing/Tips";
+import LatestToys from "./Sections/LatestToys/LatestToys";
 
 const Home = () => {
   useTitle("Home");
@@ -22,6 +23,9 @@ const Home = () => {
 
       {/* Action Figure Toys shop by category section */}
       <ShopByCategory />
+
+      {/* our latest toys section */}
+      <LatestToys/>
 
       {/* Tips for choosing toys for children section */}
       <Tips />

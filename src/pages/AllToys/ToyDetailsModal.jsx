@@ -2,6 +2,7 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 import Rating from "react-rating";
 
 const ToyDetailsModal = ({ closeModal, toy }) => {
+  console.log(toy);
   const {
     toyName,
     toyPrice,
@@ -17,10 +18,16 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
 
   console.log(toy);
   return (
-    <tr>
+    <>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 m-2">
-        <div className="modal-container bg-white p-4 rounded-md lg:max-w-4xl md:w-5/6 w-10/12">
+        <div className="modal-container relative bg-white p-4 rounded-md lg:max-w-4xl md:w-5/6 w-10/12">
           <h3 className="font-bold text-lg mb-2">Toy Details</h3>
+          <label
+            onClick={closeModal}
+            className=" sm:text-lg text-rose-500 bg-rose-100 hover:bg-rose-400 hover:text-white sm:p-4 p-3 flex justify-center items-center rounded-full duration-700 sm:h-4 sm:w-4 w-2 h-2 absolute right-3 top-3"
+          >
+            ✕
+          </label>
           <div className="md:flex gap-8">
             <div className=" md:w-5/12">
               <img
@@ -81,15 +88,9 @@ const ToyDetailsModal = ({ closeModal, toy }) => {
               </div>
             </div>
           </div>
-          <button
-            className="bg-rose-400 text-white py-2 px-4 mt-4 rounded-md duration-300 hover:bg-rose-500"
-            onClick={closeModal}
-          >
-            Close
-          </button>
         </div>
       </div>
-    </tr>
+    </>
   );
 };
 

@@ -12,10 +12,6 @@ const Navbar = () => {
 
   console.log(user);
 
-  // const handleLogIn = ()=>{
-  //   loginUser()
-  // }
-
   // Handle Logout
   const handleLogout = () => {
     logOut()
@@ -79,7 +75,7 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/all-toys">
-          <HiOutlineShoppingCart className="w-7 h-7 duration-300 hover:text-[#FF3811]" />
+          <HiOutlineShoppingCart className="w-7 h-7 duration-300 text-[#FB7185] hover:text-rose-500" />
         </Link>
       </li>
       {user ? (

@@ -1,7 +1,17 @@
+import AOS from "aos";
+import { useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 const Banner = ({ banner }) => {
   const { title, description, img } = banner;
+
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Set the duration for animations
+      mirror: false, // Disable mirroring of animations on scroll
+    });
+  }, []);
 
   return (
     <div
@@ -10,8 +20,9 @@ const Banner = ({ banner }) => {
     >
       <div className="absolute inset-0 bg-black opacity-30 duration-700"></div>
       {/* banner description */}
+      
       <div className="absolute left-4 top-1/2 lg:max-w-3xl md:max-w-xl  transform -translate-y-1/2">
-        <div className="flex flex-col items-start mx-8 lg:mx-16">
+        <div data-aos="fade-right"  className="flex flex-col items-start mx-8 lg:mx-16">
           <h2 className="lg:mb-3 mb-1 lg:text-7xl md:text-5xl text-2xl text-white">
             Get -30% Off
           </h2>

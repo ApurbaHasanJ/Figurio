@@ -24,9 +24,7 @@ const UpdateToyInfo = ({ toy, handleToyUpdate }) => {
   };
 
   return (
-    <tr>
-      {/* The button to close the modal */}
-
+    <>
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
       <div className="modal ">
@@ -115,7 +113,7 @@ const UpdateToyInfo = ({ toy, handleToyUpdate }) => {
           </form>
         </div>
       </div>
-    </tr>
+    </>
   );
 };
 

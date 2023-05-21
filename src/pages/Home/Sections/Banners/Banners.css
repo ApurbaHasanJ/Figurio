@@ -1,12 +1,12 @@
 .mySwiper .swiper-button-prev,
 .mySwiper .swiper-button-next {
-  color: rgba(246, 30, 149, 0.58) !important;
+  color: #FB7185 !important;
 }
 
 .mySwiper .swiper-pagination-bullet-active {
-  background-color: rgba(246, 30, 149, 0.58) !important;
+  background-color: #FB7185 !important;
 }
 
 .mySwiper .swiper-pagination-bullet {
-  background-color: rgba(246, 30, 149, 0.58) !important;
+  background-color: #FB7185 !important;
 }

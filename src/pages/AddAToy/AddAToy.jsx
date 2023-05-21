@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const AddAToy = () => {
-    const {user} = useContext(AuthContext)
-
+  useTitle("Add A Toy");
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);

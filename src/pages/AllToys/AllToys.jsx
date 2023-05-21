@@ -1,40 +1,46 @@
 import { useEffect, useState } from "react";
 import Toy from "./Toy";
 import useTitle from "../../hooks/useTitle";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 const AllToys = () => {
-  useTitle('All Toys')
+  useTitle("All Toys");
   const [allToys, setAllToys] = useState([]);
-  const [searchText, setSearchText] = useState('');
-  
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
     fetch("https://figurio.vercel.app/all-toys")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setAllToys(data);
+        setIsLoading(false);
       });
   }, []);
 
-  const handleSearchToys = ()=> {
+  const handleSearchToys = () => {
     fetch(`https://figurio.vercel.app/toysSearch/${searchText}`)
-    .then(res => res.json())
-    .then(data => {
-      setAllToys(data)
-      console.log(data);
-
-    })
-  }
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+      .then((res) => res.json())
+      .then((data) => {
+        setAllToys(data);
+        console.log(data);
+      });
+  };
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearchToys();
     }
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="overflow-x-auto my-container">
@@ -48,18 +54,18 @@ const AllToys = () => {
       </p>
 
       <div className="flex gap-4 my-5 justify-center">
-      <div className="form-control">
-        <input
-          type="text"
-          onChange={(e)=> setSearchText(e.target.value)}
-          placeholder="Search by name"
-          onKeyPress={handleKeyPress}
-          className="input input-bordered"
-        />
-      </div>
-      <button
-      onClick={handleSearchToys}
-       className="btn">Search</button>
+        <div className="form-control">
+          <input
+            type="text"
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search by name"
+            onKeyDown={handleKeyPress}
+            className="input input-bordered"
+          />
+        </div>
+        <button onClick={handleSearchToys} className="btn">
+          Search
+        </button>
       </div>
       <table className="table table-zebra w-full">
         {/* head */}
@@ -71,9 +77,7 @@ const AllToys = () => {
             <th>Sub-Category</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>
-              View details
-            </th>
+            <th>View details</th>
           </tr>
         </thead>
 

@@ -1,8 +1,22 @@
 import { AiOutlineSafety } from "react-icons/ai";
 import { TbGoGame } from "react-icons/tb";
 import { GiStoneStack } from "react-icons/gi";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import AOS from "aos";
 
 const Tips = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Set the duration for animations
+      mirror: false, // Disable mirroring of animations on scroll
+    });
+  }, []);
+
   return (
     <div className="mt-12 my-container">
       <>
@@ -18,7 +32,10 @@ const Tips = () => {
 
       {/* section body */}
       <div className="grid md:grid-cols-3 gap-8 mt-16">
-        <div className="border-dashed border relative p-12 rounded-lg border-rose-400">
+        <div
+          data-aos="fade-right"
+          className="border-dashed border relative p-12 rounded-lg border-rose-400"
+        >
           <div className="bg-rose-50 p-3 rounded-full absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 flex justify-center items-center">
             <AiOutlineSafety className="text-4xl " />
           </div>
@@ -30,7 +47,8 @@ const Tips = () => {
             of origin, brand...
           </p>
         </div>
-        <div className="border-dashed border relative p-12 rounded-lg border-rose-400">
+
+        <div data-aos="fade-up" className="border-dashed border relative p-12 rounded-lg border-rose-400">
           <div className="bg-rose-50 p-3 rounded-full absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 flex justify-center items-center">
             <TbGoGame className="text-4xl " />
           </div>
@@ -42,7 +60,7 @@ const Tips = () => {
             attention...
           </p>
         </div>
-        <div className="border-dashed border relative p-12 rounded-lg border-rose-400">
+        <div data-aos="fade-left" className="border-dashed border relative p-12 rounded-lg border-rose-400">
           <div className="bg-rose-50 p-3 rounded-full absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 flex justify-center items-center">
             <GiStoneStack className="text-4xl " />
           </div>

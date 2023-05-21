@@ -23,9 +23,6 @@ const Toy = ({ toy, index }) => {
     }
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <>
@@ -46,7 +43,7 @@ const Toy = ({ toy, index }) => {
         </td>
       </tr>
       {isModalOpen && (
-        <ToyDetailsModal toy={toy} closeModal={handleCloseModal} />
+        <ToyDetailsModal toy={toy}  />
       )}
     </>
   );
