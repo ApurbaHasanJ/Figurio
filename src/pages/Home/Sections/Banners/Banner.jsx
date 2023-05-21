@@ -1,6 +1,7 @@
 import AOS from "aos";
 import { useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Banner = ({ banner }) => {
   const { title, description, img } = banner;
@@ -32,10 +33,13 @@ const Banner = ({ banner }) => {
           <p className="mb-3 text-gray-100  text-xs md:text-base lg:text-lg pr-1">
             {description}
           </p>
-          <button className="btn grid gap-2">
+          <Link to="/all-toys">
+          <button 
+          className="btn grid gap-2">
             <span>See All Toys</span>
             <FaArrowRight />
           </button>
+          </Link>
         </div>
       </div>
     </div>
