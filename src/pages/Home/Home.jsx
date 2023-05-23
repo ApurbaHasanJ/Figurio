@@ -10,7 +10,7 @@ const Home = () => {
   useTitle("Home");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.history.scrollRestoration = "manual";
   }, []);
 
   return (
@@ -25,7 +25,7 @@ const Home = () => {
       <ShopByCategory />
 
       {/* our latest toys section */}
-      <LatestToys/>
+      <LatestToys />
 
       {/* Tips for choosing toys for children section */}
       <Tips />
