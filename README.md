@@ -38,7 +38,7 @@ Welcome to the Action Figure Toys website! This platform is dedicated to providi
 
 ## Getting Started
 ---
-- To explore our action figure toys collection and take advantage of all the features our website offers, simply visit [website URL]. Sign up or log in to unlock additional functionalities, including managing your own toy collection and contributing to our platform.
+- To explore our action figure toys collection and take advantage of all the features our website offers, simply visit [https://figurio.web.app/]. Sign up or log in to unlock additional functionalities, including managing your own toy collection and contributing to our platform.
 
 - We hope you enjoy your time on our Action Figure Toys website and find the perfect toys to ignite your imagination and bring joy to your life!
 ---
